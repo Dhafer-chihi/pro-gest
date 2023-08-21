@@ -1,0 +1,94 @@
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>Product List</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Product</a></li>
+              <li class="breadcrumb-item active">Product-list</li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+
+
+    <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">DataTable of products</h3>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <div class="row">
+                  <div class="form-inline">
+                    <div class="input-group" data-widget="sidebar-search">
+                      <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
+                      <div class="input-group-append">
+                        <button class="bt">
+                          <i class="fas fa-search fa-fw"></i>
+                        </button>
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <br>
+                <table id="example2" class="table table-bordered table-hover">
+                  <thead style="background-color: rgb(199, 196, 196);">
+                  <tr>
+                    <th>Product ID</th>
+                    <th>Category</th>
+                    <th>Name</th>
+                    <th>SN</th>
+                    <th>Accessory</th>
+                    <th>Client-Diag</th>
+                    <th>Tech-Diag</th>
+                    <th>Etat</th>
+                    <th>Create-Date</th>
+                    <th>Action</th>
+
+                  </tr>
+                  </thead>
+                  <tbody *ngFor="let product of productList">
+                  <tr>
+                    <td>{{product.product_id}}</td>
+                    <td>{{product.category}}</td>
+                    <td>{{product.name}}</td>
+                    <td>{{product.sn}}</td>
+                    <td>{{product.accessory}}</td>
+                    <td>{{product.client_diag}}</td>
+                    <td>{{product.tech_diag}}</td>
+                    <td>{{product.etat}}</td>
+                    <td>{{product.create_date | date : 'dd-MM-yyyy'}}</td>
+                    <td>
+                      <i class="fa fa-info-circle fa-lg"  style="color: blue;" aria-hidden="true"></i>
+                      <i class="fa fa-pen fa-lg"  (click)="btnEditProduct(product.product_id , product.id_client)" style="color: green;"></i>
+                      <i class="fa fa-trash fa-lg" aria-hidden="true" (click)="deleteProduct(product.product_id)" style="color: red;"></i>
+
+                    </td>
+                  </tr>
+                
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+      </div>
+
+      
+
+</div>    
+
+

@@ -1,0 +1,136 @@
+<div class="content-wrapper no-print">
+    <section class="content-header">
+        <div class="container-fluid">
+          <div class="row mb-2">
+            <div class="col-sm-6">
+              <h1>View Client</h1>
+            </div>
+            <div class="col-sm-6">
+              <ol class="breadcrumb float-sm-right">
+                <li class="breadcrumb-item"><a href="#">clients</a></li>
+                <li class="breadcrumb-item active">view-client</li>
+              </ol>
+            </div>
+          </div>
+        </div><!-- /.container-fluid -->
+      </section>
+      <br>
+
+      <section class="content">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-3">
+  
+              <!-- Profile Image -->
+              
+                <div class="card card-primary card-outline">
+                  <div class="card-body box-profile">
+                    <div class="text-center">
+                      <img class="profile-user-img img-fluid img-circle"
+                           src="../../assets/dist/img/avatar4.png"
+                           alt="User profile picture">
+                    </div>
+    
+                    <br>
+    
+                    <ul class="list-group list-group-unbordered mb-3">
+                      <li class="list-group-item">
+                        <b>Client ID</b> <a class="float-right">{{client_id}}</a>
+                      </li>
+                      <li class="list-group-item">
+                        <b>Nom</b> <a class="float-right">{{client.firstname}}</a>
+                      </li>
+                      <li class="list-group-item">
+                        <b>Prenom</b> <a class="float-right">{{client.lastname}} </a>
+                      </li>
+                      <li class="list-group-item">
+                        <b>Mobile</b> <a class="float-right">{{client.mobile}}</a>
+                      </li>
+                      <li class="list-group-item">
+                        <b>Email</b> <a class="float-right">{{client.email}}</a>
+                      </li>
+                      <li class="list-group-item">
+                        <b>Create Date</b> <a class="float-right">{{client.create_date | date : 'dd-MM-yyyy'}}</a>
+                      </li>
+                    </ul>
+    
+                    <a (click)="skip()" class="btn btn-danger btn-block"><b>Skip</b></a>
+                  </div>
+                  <!-- /.card-body -->
+                </div>
+              
+              <!-- /.card -->
+  
+             
+            </div>
+            <!-- /.col -->
+
+            <div class="col-md-9">
+              <div class="card">
+                <div class="card-header p-2">
+                    <h4>Product List of this client <strong style="color: red;"></strong></h4>
+                </div>
+                <div class="card-body">
+                  <div class="row">
+                    <div class="form-inline">
+                      <div class="input-group" data-widget="sidebar-search">
+                        <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
+                        <div class="input-group-append">
+                          <button class="bt">
+                            <i class="fas fa-search fa-fw"></i>
+                          </button>
+                          <button class="btn-primary" (click)="btnAddProduct(client_id)">
+                            <i class="fas fa-plus fa-fw"></i>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <br>
+                  
+                  <table id="example2" class="table table-bordered table-hover" *ngIf="productList.length>0">
+                    <thead>
+                    <tr>
+                      <th>ID Product</th>
+                      <th>Name</th>
+                      <th>SN</th>
+                      <th>Etat</th>
+                      <th>Create Date</th>
+                      <th>Action</th>
+                    </tr>
+                    </thead>
+                    <tbody *ngFor="let product of productList">
+                    <tr>
+                      <td>{{product.product_id}}</td>
+                      <td>{{product.name}}</td>
+                      <td>{{product.sn}}</td>
+                      <td>{{product.etat}}</td>
+                      <td>{{product.create_date | date : 'dd-MM-yyyy'}}</td>
+                      <td class="icon">
+                        <i class="fa fa-eye fa-lg" style="color: gray;"  (click)="printPage(product.id_client , product.product_id)" aria-hidden="true"></i>
+                        <i class="fa fa-info-circle fa-lg" style="color: blue;" aria-hidden="true"></i>
+                        <i class="fa fa-pen fa-lg" (click)="btnEditProduct(product.product_id , product.id_client)" style="color: green;"></i>
+                        <i class="fa fa-trash fa-lg" (click)="deleteProduct(product.product_id)" aria-hidden="true"  style="color: red;"></i>
+                      </td>
+
+                    </tr>
+                    
+                    </tbody>
+                    
+                  </table>
+                </div>
+              </div>
+              
+            </div>
+            
+          </div>
+          
+        </div>
+      </section>    
+      
+ </div>
+
+ 
+
+
+

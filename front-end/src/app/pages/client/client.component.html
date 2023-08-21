@@ -1,0 +1,92 @@
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>Clients List</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">clients</a></li>
+              <li class="breadcrumb-item active">client-list</li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">DataTable of clients</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+              <div class="row">
+                <div class="form-inline">
+                  <div class="input-group" data-widget="sidebar-search">
+                    <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
+                    <div class="input-group-append">
+                      <button class="bt">
+                        <i class="fas fa-search fa-fw"></i>
+                      </button>
+                      <button class="btn-primary" [routerLink]="['add-client']">
+                        <i class="fas fa-plus fa-fw"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <br>
+              <table id="example2" class="table table-bordered table-hover">
+                <thead style="background-color: rgb(199, 196, 196);">
+                <tr>
+                 
+                  <th>Client ID</th>
+                  <th>Nom</th>
+                  <th>Prenom</th>
+                  <th>Mobile</th>
+                  <th>Email</th>
+                  <th>Create Date</th>
+                  <th>Action</th>
+  
+                </tr>
+                </thead>
+                <tbody *ngFor="let client of clientList">
+                <tr>
+                  
+                  <td>{{client.client_id}}</td>
+                  <td>{{client.firstname}}</td>
+                  <td>{{client.lastname}}</td>
+                  <td>{{client.mobile}}</td>
+                  <td>{{client.email}}</td>
+                  <td>{{client.create_date | date : 'dd-MM-yyyy'}}</td>
+  
+                  <td>
+                    <i class="fa fa-info-circle fa-lg"  [routerLink]="['view-client' , client.client_id]" style="color: blue;" aria-hidden="true"></i>
+                    <i class="fa fa-pen fa-lg" [routerLink]="['edit-client' , client.client_id]" style="color: green;"></i>
+                    <i class="fa fa-trash fa-lg" aria-hidden="true" (click)="deleteClient(client.client_id)" style="color: red;"></i>
+  
+  
+                  </td>
+                </tr>
+              
+              </table>
+            </div>
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+    </div>
+    <!-- /.content -->
+  </div>
+
+
+ 

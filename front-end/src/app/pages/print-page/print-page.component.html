@@ -1,0 +1,80 @@
+<div class="content-wrapper">
+
+  <div class="container-fluid">
+    <div class="row no-gutters">
+      <div class="col">
+        <h1> Assistance Nº {{product.product_id}} </h1>
+      </div>
+    </div>
+  
+    <div class="row no-gutters">
+      <div class="col">
+        <img
+        src="assets/dist/img/logo.svg"
+        alt="logotipo"
+        class="logotipo">
+      </div>
+  
+      <div class="col">
+        <h2>Contactez-nous</h2>
+        <p>71 892 433</p>    
+        <div class="address">
+          <p>contact@ispace.tn</p>
+          <p>N°63 Av. Alin Savary</p>
+          <p>Tunis 1002</p>
+        </div>
+      </div>
+    </div>
+  
+    <div class="row no-gutters items-group">
+      <div class="col-3 label">
+        <p>Client:</p>
+        <p>Contact:</p>
+      </div>
+  
+      <div class="col-9">
+        <p>{{client.firstname}} {{client.lastname}}</p>
+        <p>{{client.mobile}}</p>
+      </div>
+    </div>
+  
+    <div class="row no-gutters items-group">
+      <div class="col-3 label">
+        <p>Product:</p>
+        <p>Serial:</p>
+        <p>Problem:</p>
+        <p>Date:</p>
+      </div>
+  
+      <div class="col-9">
+        <p>Apple > {{product.category}} > {{product.name}}</p>
+        <p>{{product.sn}}</p>
+        <p>{{product.client_diag}}</p>
+        <p>{{product.create_date | date : 'dd-MM-yyyy'}}</p>
+      </div>
+    </div>
+  
+    <div class="row no-gutters items-group">
+      <div class="col">
+        <p class="label">Conditions générales:</p>
+        <ul class="disclaimer">
+          <li>Période de diagnostic 48 heurs</li>
+          <li>Période des commandes des piéces 40 jours</li>
+          <li>Période de garantie de réparation 90 jours</li>
+          <li>Cette assistance n'est délivrée qu'aux personnes qui présentent ce document</li>
+        </ul>
+      </div>
+    </div>
+  
+    <div class="row no-gutters">
+      <div class="col">
+        <p class="disclaimer signature-field">
+          Je déclare avoir lu et accepté les dispositions de ce document le {{product.create_date | date : 'dd-MM-yyyy'}}</p>
+      </div>
+    </div>
+  </div><br>
+  <div class="print no-print">
+    <button class="btn btn-primary"  (click)="print()">Imprimer</button>
+  </div>
+</div>
+
